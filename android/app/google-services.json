@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "351898122336",
+    "firebase_url": "https://bvsik-app.firebaseio.com",
+    "project_id": "bvsik-app",
+    "storage_bucket": "bvsik-app.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:351898122336:android:54129b4d35da46ad00eb05",
+        "android_client_info": {
+          "package_name": "dev.enzoconty.bvsik"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "351898122336-8inue5e7u8utvlg7ioeq2rkc7htcl802.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "dev.enzoconty.bvsik",
+            "certificate_hash": "ea3a915f2096d31e3686e66694571228cdc90ce9"
+          }
+        },
+        {
+          "client_id": "351898122336-8696tm6jfrij9gt3piueqkp1valeoe11.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAsFkzlKvqBC5OXX3l9rZQLyypi4rZ4hy0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "351898122336-8696tm6jfrij9gt3piueqkp1valeoe11.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
