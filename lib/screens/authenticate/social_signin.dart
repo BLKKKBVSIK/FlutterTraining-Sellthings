@@ -52,9 +52,12 @@ class _SignInState extends State<SignIn> {
                 Padding(
                   padding: const EdgeInsets.only(top: 25.0),
                   child: Container(
-                    child: SvgPicture.asset(
-                      'assets/register.svg',
-                      width: MediaQuery.of(context).size.width * 0.6,
+                    child: Hero(
+                      tag: 'registerSVG',
+                      child: SvgPicture.asset(
+                        'assets/register.svg',
+                        width: MediaQuery.of(context).size.width * 0.6,
+                      ),
                     ),
                   ),
                 ),

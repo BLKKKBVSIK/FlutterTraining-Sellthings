@@ -1,4 +1,6 @@
+import 'package:bvsik/config/app_config.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 enum AuthMode { Signup, Login }
 
@@ -11,27 +13,48 @@ class AuthScreen extends StatelessWidget {
     // final transformConfig = Matrix4.rotationZ(-8 * pi / 180);
     // transformConfig.translate(-10.0);
     return Scaffold(
-      appBar: AppBar(),
+      //appBar: AppBar(),
       // resizeToAvoidBottomInset: false,
-      body: Stack(
-        children: <Widget>[
-          SingleChildScrollView(
-            child: Container(
-              height: deviceSize.height,
-              width: deviceSize.width,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: <Widget>[
-                  Flexible(
-                    flex: deviceSize.width > 600 ? 2 : 1,
-                    child: AuthCard(),
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            Container(
+              margin: EdgeInsets.only(top: 70),
+              width: 175,
+              color: Colors.white,
+              child: Container(
+                  child: Image.asset(
+                'assets/logo.png',
+              )),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(top: 25.0),
+              child: Container(
+                child: Hero(
+                  tag: 'registerSVG',
+                  child: SvgPicture.asset(
+                    'assets/register.svg',
+                    width: MediaQuery.of(context).size.width * 0.2,
                   ),
-                ],
+                ),
               ),
             ),
-          ),
-        ],
+            SizedBox(
+              height: 30,
+            ),
+            Flexible(
+              flex: deviceSize.width > 600 ? 2 : 1,
+              child: AuthCard(),
+            ),
+            RaisedButton(
+              color: Colors.brown,
+              child: Text("Revenir en arrière"),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            )
+          ],
+        ),
       ),
     );
   }
@@ -94,7 +117,7 @@ class _AuthCardState extends State<AuthCard> {
       shape: RoundedRectangleBorder(
         borderRadius: BorderRadius.circular(10.0),
       ),
-      elevation: 8.0, 
+      elevation: 8.0,
       child: Container(
         height: _authMode == AuthMode.Signup ? 320 : 260,
         constraints:
@@ -143,7 +166,7 @@ class _AuthCardState extends State<AuthCard> {
                             if (value != _passwordController.text) {
                               return 'Passwords do not match!';
                             }
-                          return "";
+                            return "";
                           }
                         : null,
                   ),
