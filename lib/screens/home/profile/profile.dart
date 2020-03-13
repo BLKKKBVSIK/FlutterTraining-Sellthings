@@ -6,7 +6,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 class ProfilPage extends StatefulWidget {
-
   @override
   State<StatefulWidget> createState() => new _ProfilPage();
 }
@@ -93,14 +92,16 @@ List<ItemModel> offers = [
 ];
 
 class _ProfilPage extends State<ProfilPage> {
-
   @override
   Widget build(BuildContext context) {
     final user = Provider.of<User>(context);
 
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(backgroundColor: primaryColor, elevation: 0,),
+        appBar: AppBar(
+          backgroundColor: primaryColor,
+          elevation: 0,
+        ),
         endDrawer: MainDrawer(),
         body: Stack(
           children: <Widget>[
@@ -126,6 +127,19 @@ class _ProfilPage extends State<ProfilPage> {
                     child: Center(
                         child: Text(
                       user.name,
+                      style: TextStyle(
+                          fontWeight: FontWeight.w700,
+                          fontSize: 20,
+                          color: Colors.white),
+                    )),
+                  ),
+                  //DEBUGING UID
+
+                  Padding(
+                    padding: const EdgeInsets.only(top: 1.0),
+                    child: Center(
+                        child: Text(
+                      user.uid,
                       style: TextStyle(
                           fontWeight: FontWeight.w700,
                           fontSize: 20,
@@ -167,7 +181,9 @@ class _ProfilPage extends State<ProfilPage> {
         text: TextSpan(
           text: 'Mes annonces',
           style: TextStyle(
-              color: darkKnighMode ? textDarkTheme : Colors.black, fontWeight: FontWeight.bold, fontSize: 25),
+              color: darkKnighMode ? textDarkTheme : Colors.black,
+              fontWeight: FontWeight.bold,
+              fontSize: 25),
         ),
       ),
     );
@@ -176,9 +192,9 @@ class _ProfilPage extends State<ProfilPage> {
   Widget _myOffersWidget() {
     return Container(
       height: (MediaQuery.of(context).size.height -
-                    AppBar().preferredSize.height -
-                    MediaQuery.of(context).padding.top) *
-                0.60,
+              AppBar().preferredSize.height -
+              MediaQuery.of(context).padding.top) *
+          0.60,
       padding: const EdgeInsets.only(top: 15.0),
       child: ListView.builder(
           shrinkWrap: true,
@@ -203,7 +219,8 @@ class _ProfilPage extends State<ProfilPage> {
           Container(
             height: 110,
             width: (MediaQuery.of(context).size.width -
-                    MediaQuery.of(context).padding.right - 140),
+                MediaQuery.of(context).padding.right -
+                140),
             padding: EdgeInsets.only(left: 10, top: 10),
             color: darkKnighMode ? secondaryDarkTheme : Colors.white,
             child: Column(
@@ -211,13 +228,13 @@ class _ProfilPage extends State<ProfilPage> {
               children: <Widget>[
                 Text('${item.nom}',
                     style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 16,
-                      color: darkKnighMode ? Colors.white : Colors.black
-                    )),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                        color: darkKnighMode ? Colors.white : Colors.black)),
                 Text(
                   '${item.description.substring(0, 70)}...',
-                  style: TextStyle(color: darkKnighMode ? textDarkTheme : Colors.black),
+                  style: TextStyle(
+                      color: darkKnighMode ? textDarkTheme : Colors.black),
                 ),
                 // SizedBox(height: 30,),
                 Expanded(
