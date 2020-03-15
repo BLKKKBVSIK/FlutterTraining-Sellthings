@@ -65,8 +65,7 @@ class _SignInState extends State<SignIn> {
                 Container(
                     padding: EdgeInsets.only(top: 20.0),
                     child: Column(children: <Widget>[])),
-                _buildSocialSignIn("CONNEXION AVEC FACEBOOK", () {}),
-                _buildSocialSignIn("CONNEXION AVEC GOOGLE", () {}),
+                _buildSocialSignIn("CONNEXION AVEC GOOGLE", _auth.signInWithGoogle),
                 _buildSocialSignIn("SE CONNECTER / S'INSCRIRE", registerSignIn),
                 _buildSocialSignIn("CONTINUER SANS SE CONNECTER", signInAnoun,
                     outlineButton: true),
