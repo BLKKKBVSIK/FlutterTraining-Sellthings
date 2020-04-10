@@ -1,7 +1,6 @@
 import 'package:bvsik/models/user.dart';
 import 'package:bvsik/screens/authenticate/register.dart';
 import 'package:bvsik/screens/home/navigation_bar.dart';
-import 'package:bvsik/screens/home/profile/profile.dart';
 import 'package:bvsik/screens/wrapper.dart';
 import 'package:bvsik/services/auth.dart';
 import 'package:flutter/material.dart';

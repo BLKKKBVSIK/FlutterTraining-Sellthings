@@ -34,7 +34,7 @@ class _HomePage extends State<HomePage> {
     super.initState();
   }
 
-  _tileItem(int index) {
+  Widget _tileItem(int index) {
     return Container(
       color: darkKnighMode ? menuDarkTheme : Colors.white,
       padding: const EdgeInsets.all(4.0),
@@ -116,7 +116,7 @@ class _HomePage extends State<HomePage> {
     );
   }
 
-  loadNextData() {
+  void loadNextData() {
     final initialIndex = _data.length;
     final finalIndex = _data.length + 10;
     print('load data from ${_data.length}');
