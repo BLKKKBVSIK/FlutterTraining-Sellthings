@@ -1,5 +1,5 @@
-import 'package:bvsik/config/app_config.dart';
-import 'package:bvsik/screens/home/homepage/homepage.dart';
+import 'package:bvsik/config/AppConfig.dart';
+import 'package:bvsik/screens/home/homepage/HomePage.dart';
 import 'package:bvsik/screens/home/profile/profile.dart';
 import 'package:flutter/material.dart';
 
@@ -7,17 +7,14 @@ class NavigationBar extends StatefulWidget {
   static const String routeName = '/navigation';
 
   @override
-  State<StatefulWidget> createState() => new _NavigationBar();
+  State<StatefulWidget> createState() => _NavigationBar();
 }
 
 class _NavigationBar extends State<NavigationBar> {
   int _selectedIndex = 0;
-  final List<Widget> navBar = [
+  final List<Widget> navBar = <Widget>[
     HomePage(),
-    Container(
-      color: Colors.red,
-    ),
-    ProfilPage()
+    ProfilePage()
   ];
 
   void _onItemTapped(int index) {
@@ -36,18 +33,14 @@ class _NavigationBar extends State<NavigationBar> {
             title: Text('Accueil'),
           ),
           BottomNavigationBarItem(
-            icon: Icon(Icons.search),
-            title: Text('Recherche'),
-          ),
-          BottomNavigationBarItem(
             icon: Icon(Icons.person),
             title: Text('Profil'),
           ),
         ],
         currentIndex: _selectedIndex,
         selectedItemColor: primaryColor,
-        unselectedItemColor: darkKnighMode ? textDarkTheme : Colors.black,
-        backgroundColor: darkKnighMode ? menuDarkTheme : Colors.white,
+        unselectedItemColor: darkNightMode ? textDarkTheme : Colors.black,
+        backgroundColor: darkNightMode ? menuDarkTheme : Colors.white,
         onTap: _onItemTapped,
       ),
       body: navBar[_selectedIndex],

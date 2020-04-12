@@ -1,22 +1,19 @@
-import 'package:bvsik/config/app_config.dart';
-import 'package:bvsik/models/user.dart';
+import 'package:bvsik/config/AppConfig.dart';
 import 'package:bvsik/screens/home/navigation_bar.dart';
-import 'package:bvsik/screens/home/profile/profile.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
 import 'package:bvsik/services/auth.dart';
 
 class MainDrawer extends StatelessWidget {
   Widget buildListTile(String title, IconData icon, Function tapHandler) {
     return ListTile(
       leading: Icon(icon,
-          size: 20, color: darkKnighMode ? textDarkTheme : Colors.black),
+          size: 20, color: darkNightMode ? textDarkTheme : Colors.black),
       title: Text(
         title,
         style: TextStyle(
           fontSize: 18,
           fontWeight: FontWeight.bold,
-          color: darkKnighMode ? textDarkTheme : Colors.black,
+          color: darkNightMode ? textDarkTheme : Colors.black,
         ),
       ),
       onTap: () => tapHandler(),
@@ -34,7 +31,7 @@ class MainDrawer extends StatelessWidget {
 
     return Drawer(
       child: Container(
-        color: darkKnighMode ? menuDarkTheme : Colors.white,
+        color: darkNightMode ? menuDarkTheme : Colors.white,
         child: Column(
           children: <Widget>[
             Container(
@@ -50,8 +47,8 @@ class MainDrawer extends StatelessWidget {
                     0.04,
               ),
               alignment: Alignment.center,
-              color: darkKnighMode ? menuDarkTheme : Colors.white,
-              child: darkKnighMode
+              color: darkNightMode ? menuDarkTheme : Colors.white,
+              child: darkNightMode
                   ? Image.asset(
                       'assets/logoWhite.png',
                     )
@@ -66,7 +63,7 @@ class MainDrawer extends StatelessWidget {
                   0.02,
             ),
             buildListTile('Dark Knight Mode', Icons.brightness_2, () {
-              darkKnighMode = !darkKnighMode;
+              darkNightMode = !darkNightMode;
               Navigator.of(context)
                   .pushReplacementNamed(NavigationBar.routeName);
             }),
@@ -81,12 +78,12 @@ class MainDrawer extends StatelessWidget {
                     'Crédits',
                     style: TextStyle(
                       fontSize: 18,
-                      color: darkKnighMode ? textDarkTheme : Colors.black,
+                      color: darkNightMode ? textDarkTheme : Colors.black,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   icon: Icon(Icons.info,
-                      color: darkKnighMode ? textDarkTheme : Colors.black),
+                      color: darkNightMode ? textDarkTheme : Colors.black),
                   applicationIcon: Image.asset(
                     'assets/logo.png',
                     height: (MediaQuery.of(context).size.height -

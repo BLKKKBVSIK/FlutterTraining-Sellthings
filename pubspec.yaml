@@ -14,7 +14,7 @@ description: A new Flutter project.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.2.2 <3.0.0"
 
 dependencies: 
   flutter:
@@ -30,6 +30,8 @@ dependencies:
   provider: ^4.0.4
   carousel_slider: ^1.4.1
   infinite_widgets: ^1.0.1
+  image_picker_gallery_camera: ^0.1.4
+  flare_splash_screen: ^2.0.1+2
 
 dev_dependencies:
   flutter_test:
