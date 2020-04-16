@@ -1,16 +1,18 @@
-# bvsik
+# SellThings
 
-A new Flutter project.
+Sellthing is a Vinted like project, to sell items thought an app using FireAuth and Flutter.
 
-## Getting Started
+## PREVIEW:
 
-This project is a starting point for a Flutter application.
+<p float="left">
+    <img src="https://user-images.githubusercontent.com/20175372/79498519-bfe9b380-8029-11ea-9160-76007ba14ebe.png" width="33%" style="margin: 0px 0px 0px 0px;">
+    <img src="https://user-images.githubusercontent.com/20175372/79498522-c11ae080-8029-11ea-9282-cf7d0d4e8c0b.png" width="33%" style="margin: 0px 0px 0px 0px;">
+    <img src="https://user-images.githubusercontent.com/20175372/79498524-c1b37700-8029-11ea-9502-6c54e885e927.png" width="33%" style="margin: 0px 0px 0px 0px;">
+    <img src="https://user-images.githubusercontent.com/20175372/79498528-c2e4a400-8029-11ea-80a0-0af3134775fb.png" width="100%" style="margin: 0px 0px 0px 0px;">
+    <center></center>
+</p>
 
-A few resources to get you started if this is your first Flutter project:
+## RELEASE:
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+No release upcoming, but you can still build the project for yourself with `flutter build` command.
+Don't forget to change the FireAuth endpoint.
