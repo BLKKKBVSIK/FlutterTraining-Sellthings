@@ -18,7 +18,7 @@ class ProductPage extends StatefulWidget {
 List<T> map<T>(List<dynamic> list, Function handler) {
   final List<T> result = <T>[];
   for (int i = 0; i < list.length; i++) {
-    result.add(handler(i, list[i]));
+    result.add(handler(i, list[i]) as T);
   }
 
   return result;
@@ -76,13 +76,19 @@ class _ProductPage extends State<ProductPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        body: ListView(
-          children: <Widget>[
-            if (widget.item.images == null) imageWidget() else carouselWidget(),
-            authorWidget(),
-            itemHeaderWidget(),
-            buyButtonWidget()
-          ],
+        body: Container(
+          color: darkNightMode ? menuDarkTheme : Colors.white,
+          child: ListView(
+            children: <Widget>[
+              if (widget.item.images == null)
+                imageWidget()
+              else
+                carouselWidget(),
+              authorWidget(),
+              itemHeaderWidget(),
+              buyButtonWidget()
+            ],
+          ),
         ),
       ),
     );
@@ -139,28 +145,38 @@ class _ProductPage extends State<ProductPage> {
         shrinkWrap: true,
         children: <Widget>[
           Text(widget.item.name,
-              style: TextStyle(fontWeight: FontWeight.w500, fontSize: 18)),
+              style: TextStyle(
+                  fontWeight: FontWeight.w500,
+                  fontSize: 18,
+                  color: darkNightMode ? textDarkTheme : Colors.black)),
           Padding(
             padding: const EdgeInsets.only(top: 4.0, bottom: 2.0),
             child: Text(widget.item.state,
                 style: TextStyle(
-                    fontWeight: FontWeight.w300,
-                    fontSize: 18,
-                    color: Colors.grey)),
+                  fontWeight: FontWeight.w300,
+                  fontSize: 18,
+                  color: darkNightMode ? Colors.white70 : Colors.grey,
+                )),
           ),
           Padding(
             padding: const EdgeInsets.only(bottom: 8.0),
             child: Text(widget.item.description,
-                style: TextStyle(fontWeight: FontWeight.w300, fontSize: 18)),
+                style: TextStyle(
+                    fontWeight: FontWeight.w300,
+                    fontSize: 18,
+                    color: darkNightMode ? textDarkTheme : Colors.black)),
           ),
           RichText(
               text: TextSpan(
-                  style: TextStyle(color: Colors.black),
+                  style: TextStyle(
+                      color: darkNightMode ? textDarkTheme : Colors.black),
                   children: <TextSpan>[
                 TextSpan(
                     text: '${widget.item.price} €',
-                    style:
-                        TextStyle(fontWeight: FontWeight.bold, fontSize: 18)),
+                    style: TextStyle(
+                        fontWeight: FontWeight.bold,
+                        fontSize: 18,
+                        color: darkNightMode ? textDarkTheme : Colors.black)),
                 TextSpan(
                     text: ' + ${widget.item.shippingFees} € de frais de port',
                     style: TextStyle(
@@ -174,7 +190,9 @@ class _ProductPage extends State<ProductPage> {
   }
 
   bool isInfiniteScroll() {
-    if (widget.item.images.length > 1) return true;
+    if (widget.item.images.length > 1) {
+      return true;
+    }
     return false;
   }
 
@@ -260,7 +278,10 @@ class _ProductPage extends State<ProductPage> {
                         padding: const EdgeInsets.only(left: 15.0),
                         child: Text(
                           widget.item.author,
-                          style: TextStyle(fontWeight: FontWeight.bold),
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              color:
+                                  darkNightMode ? textDarkTheme : Colors.black),
                         ),
                       )
                     ],
@@ -275,14 +296,19 @@ class _ProductPage extends State<ProductPage> {
                 children: <Widget>[
                   RichText(
                       text: TextSpan(
-                          style: TextStyle(color: Colors.black),
+                          style: TextStyle(
+                              color:
+                                  darkNightMode ? textDarkTheme : Colors.black),
                           children: <TextSpan>[
                         TextSpan(
-                            text: getNbrOffers(),
+                            text: getNbrOffers().toString(),
                             style: TextStyle(
                                 color: primaryColor,
                                 fontWeight: FontWeight.bold)),
-                        const TextSpan(text: ' annonces en cours')
+                        TextSpan(
+                            text: getNbrOffers() > 1
+                                ? ' annonces en cours'
+                                : ' annonce en cours')
                       ]))
                 ],
               ),
@@ -303,12 +329,14 @@ class _ProductPage extends State<ProductPage> {
       return NetworkImage(widget.item.images[0]);
   }
 
-  String getNbrOffers() {
+  int getNbrOffers() {
     int res = 0;
 
     for (int i = 0; i < it.length; i++) {
-      if (it[i].author == widget.item.author) res++;
+      if (it[i].author == widget.item.author) {
+        res++;
+      }
     }
-    return res.toString();
+    return res;
   }
 }

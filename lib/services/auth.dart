@@ -2,18 +2,23 @@ import 'package:bvsik/models/user.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 
+User finalUser = User(uid: null);
+
 class AuthService {
   final FirebaseAuth _auth = FirebaseAuth.instance;
   final GoogleSignIn googleSignIn = GoogleSignIn();
 
   //create User() from FireBaseUser()
   User _userFromFirebaseUser(FirebaseUser user) {
-
-    // Get info user from FireStore then create User()
     return user != null
-        ? User(
-            uid: user.uid,
-          )
+        ? user.displayName != null
+            ? User(
+                name: user.displayName,
+                uid: user.uid,
+                pictureUrl: user.photoUrl)
+            : User(
+                uid: user.uid,
+              )
         : null;
   }
 
@@ -51,7 +56,8 @@ class AuthService {
   }
 
   //register with email/password
-  Future<dynamic> registerWithEmailPassword(String email, String password) async {
+  Future<dynamic> registerWithEmailPassword(
+      String email, String password) async {
     try {
       final AuthResult result = await _auth.createUserWithEmailAndPassword(
           email: email, password: password);
@@ -95,10 +101,12 @@ class AuthService {
 
     print(user.displayName);
 
-    return User(
+    finalUser = User(
       uid: user.uid,
       name: user.displayName,
       pictureUrl: user.photoUrl,
     );
+
+    return finalUser;
   }
 }

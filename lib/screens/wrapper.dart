@@ -9,7 +9,6 @@ import 'package:provider/provider.dart';
    Widget build(BuildContext context) {
 
      final User user = Provider.of<User>(context);
-     print(user);
      //Auth wrapper
      return user == null ? Authenticate() : NavigationBar();
    }

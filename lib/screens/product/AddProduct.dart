@@ -29,7 +29,7 @@ class _AddProduct extends State<AddProduct> {
         Icons.add,
         color: Colors.red,
       ),
-    );
+    ) as File;
     setState(() {
       _image = image;
     });
@@ -40,18 +40,21 @@ class _AddProduct extends State<AddProduct> {
     final User user = Provider.of<User>(context);
     return SafeArea(
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.all(10.0),
-          child: ListView(
-            children: <Widget>[
-              header(),
-              addPhotos(),
-              title(),
-              desc(),
-              state(),
-              price(),
-              sendButton(user),
-            ],
+        body: Container(
+          color: darkNightMode ? menuDarkTheme : Colors.white,
+          child: Padding(
+            padding: const EdgeInsets.all(10.0),
+            child: ListView(
+              children: <Widget>[
+                header(),
+                addPhotos(),
+                title(),
+                desc(),
+                state(),
+                price(),
+                sendButton(user),
+              ],
+            ),
           ),
         ),
       ),
@@ -63,10 +66,12 @@ class _AddProduct extends State<AddProduct> {
       child: Row(
         children: <Widget>[
           Container(child: const BackButton()),
-          const Center(
+          Center(
             child: Text(
               'Vendez votre produit',
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(
+                  fontSize: 20,
+                  color: darkNightMode ? textDarkTheme : Colors.black),
             ),
           )
         ],
@@ -92,13 +97,16 @@ class _AddProduct extends State<AddProduct> {
                   ),
                 ),
               ),
-              if (_image != null) Padding(
-                      padding: const EdgeInsets.only(top: 15.0),
-                      child: Container(
-                        child: Image.file(_image),
-                        constraints: const BoxConstraints(maxWidth: 200),
-                      ),
-                    ) else Container(),
+              if (_image != null)
+                Padding(
+                  padding: const EdgeInsets.only(top: 15.0),
+                  child: Container(
+                    child: Image.file(_image),
+                    constraints: const BoxConstraints(maxWidth: 200),
+                  ),
+                )
+              else
+                Container(),
             ],
           ),
         ),
@@ -111,11 +119,14 @@ class _AddProduct extends State<AddProduct> {
       child: TextField(
         controller: _titleController,
         cursorColor: primaryColor,
-        decoration: const InputDecoration(
+        decoration: InputDecoration(
           hintText: 'Titre',
+          hintStyle: TextStyle(
+              color: darkNightMode ? Colors.white60 : Colors.black),
           labelText: 'Titre',
-          labelStyle: TextStyle(color: primaryColor),
+          labelStyle: const TextStyle(color: primaryColor),
         ),
+        style: TextStyle(color: darkNightMode ? textDarkTheme : Colors.black),
       ),
     );
   }
@@ -125,11 +136,14 @@ class _AddProduct extends State<AddProduct> {
       child: TextField(
         controller: _descController,
         cursorColor: primaryColor,
-        decoration: const InputDecoration(
+        decoration: InputDecoration(
           hintText: 'Description',
+          hintStyle: TextStyle(
+              color: darkNightMode ? Colors.white60 : Colors.black),
           labelText: 'Description',
-          labelStyle: TextStyle(color: primaryColor),
+          labelStyle: const TextStyle(color: primaryColor),
         ),
+        style: TextStyle(color: darkNightMode ? textDarkTheme : Colors.black),
       ),
     );
   }
@@ -139,11 +153,14 @@ class _AddProduct extends State<AddProduct> {
       child: TextField(
         controller: _stateController,
         cursorColor: primaryColor,
-        decoration: const InputDecoration(
+        decoration: InputDecoration(
           hintText: 'Ex: neuf, comme neuf, bon état, en l\'état...',
+          hintStyle: TextStyle(
+              color: darkNightMode ? Colors.white60 : Colors.black),
           labelText: 'Etat',
-          labelStyle: TextStyle(color: primaryColor),
+          labelStyle: const TextStyle(color: primaryColor),
         ),
+        style: TextStyle(color: darkNightMode ? textDarkTheme : Colors.black),
       ),
     );
   }
@@ -156,24 +173,32 @@ class _AddProduct extends State<AddProduct> {
           child: TextField(
             controller: _priceController,
             cursorColor: primaryColor,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               hintText: 'Prix',
+              hintStyle: TextStyle(
+                  color: darkNightMode ? Colors.white60 : Colors.black),
               labelText: 'Prix',
-              labelStyle: TextStyle(color: primaryColor),
+              labelStyle: const TextStyle(color: primaryColor),
             ),
             keyboardType: TextInputType.number,
+            style:
+                TextStyle(color: darkNightMode ? textDarkTheme : Colors.black),
           ),
         ),
         Container(
           child: TextField(
             controller: _fdpController,
             cursorColor: primaryColor,
-            decoration: const InputDecoration(
+            decoration: InputDecoration(
               hintText: 'Frais de port',
+              hintStyle: TextStyle(
+                  color: darkNightMode ? Colors.white60 : Colors.black),
               labelText: 'Frais de port',
-              labelStyle: TextStyle(color: primaryColor),
+              labelStyle: const TextStyle(color: primaryColor),
             ),
             keyboardType: TextInputType.number,
+            style:
+                TextStyle(color: darkNightMode ? textDarkTheme : Colors.black),
           ),
         ),
       ],
@@ -216,7 +241,7 @@ class _AddProduct extends State<AddProduct> {
         price: _priceController.text,
         shippingFees: _fdpController.text,
         state: _stateController.text,
-    author: user.name ?? 'Jack Leborgne');
+        author: user.name ?? 'Jack Leborgne');
     it.insert(0, newItem);
     Navigator.pop(context);
   }

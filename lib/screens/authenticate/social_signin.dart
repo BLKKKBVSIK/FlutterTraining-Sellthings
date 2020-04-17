@@ -85,7 +85,7 @@ class _SignInState extends State<SignIn> {
     );
   }
 
-  Widget _buildSocialSignIn(String label, Function handler,
+  Widget _buildSocialSignIn(String label, void Function() handler,
       {bool outlineButton = false}) {
     return Container(
       width: MediaQuery.of(context).size.width * 0.7,

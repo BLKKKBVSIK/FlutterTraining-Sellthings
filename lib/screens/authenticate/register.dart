@@ -93,7 +93,6 @@ class _AuthCardState extends State<AuthCard> {
       final dynamic result = await _auth.signInWithEmailPassword(
           _authData['email'], _authData['password']);
       if (result == null) {
-        print('Its null !');
         AlertDialog(
           title: const Text('Alert Dialog title'),
           content: const Text('Alert Dialog body'),
@@ -108,7 +107,6 @@ class _AuthCardState extends State<AuthCard> {
           ],
         );
       } else {
-        print('its a user !');
         Navigator.of(context).pop();
       }
     } else {
@@ -157,7 +155,7 @@ class _AuthCardState extends State<AuthCard> {
                       if (value.isEmpty || !value.contains('@')) {
                         return 'Invalid email!';
                       }
-                      return '';
+                      return null;
                     },
                     onSaved: (String value) {
                       _authData['email'] = value;
@@ -171,7 +169,7 @@ class _AuthCardState extends State<AuthCard> {
                       if (value.isEmpty || value.length < 6) {
                         return 'Password is too short!';
                       }
-                      return '';
+                      return null;
                     },
                     onSaved: (String value) {
                       _authData['password'] = value;
@@ -188,7 +186,7 @@ class _AuthCardState extends State<AuthCard> {
                               if (value != _passwordController.text) {
                                 return 'Passwords do not match!';
                               }
-                              return '';
+                              return null;
                             }
                           : null,
                     ),
@@ -200,7 +198,7 @@ class _AuthCardState extends State<AuthCard> {
                         if (value.isEmpty) {
                           return 'Invalid name !';
                         }
-                        return 'Success';
+                        return null;
                       },
                       onSaved: (String value) {
                         _authData['firstname'] = value;
@@ -213,7 +211,7 @@ class _AuthCardState extends State<AuthCard> {
                         if (value.isEmpty) {
                           return 'Invalid name !';
                         }
-                        return 'Success';
+                        return null;
                       },
                       onSaved: (String value) {
                         _authData['lastname'] = value;

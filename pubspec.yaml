@@ -16,7 +16,7 @@ version: 1.0.0+1
 environment:
   sdk: ">=2.2.2 <3.0.0"
 
-dependencies: 
+dependencies:
   flutter:
     sdk: flutter
 
@@ -32,11 +32,16 @@ dependencies:
   infinite_widgets: ^1.0.1
   image_picker_gallery_camera: ^0.1.4
   flare_splash_screen: ^2.0.1+2
+  flutter_launcher_icons: ^0.7.4
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
+flutter_icons:
+  android: "launcher_icon"
+  ios: true
+  image_path: "assets/s.png"
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

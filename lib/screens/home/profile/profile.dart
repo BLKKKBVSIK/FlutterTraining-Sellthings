@@ -18,8 +18,9 @@ class _ProfilePage extends State<ProfilePage> {
   @override
   void initState() {
     for (int i = 0; i < it.length; i++) {
-      if (it[i].author == user.name)
+      if (it[i].author == user.name) {
         profileOffers.add(it[i]);
+      }
     }
     super.initState();
   }
@@ -65,17 +66,6 @@ class _ProfilePage extends State<ProfilePage> {
                           color: Colors.white),
                     )),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.only(top: 1.0),
-                    child: Center(
-                        child: Text(
-                      user.uid,
-                      style: TextStyle(
-                          fontWeight: FontWeight.w700,
-                          fontSize: 20,
-                          color: Colors.white),
-                    )),
-                  )
                 ],
               ),
             ),
@@ -120,18 +110,36 @@ class _ProfilePage extends State<ProfilePage> {
   }
 
   Widget _myOffersWidget() {
-    return Container(
-      height: (MediaQuery.of(context).size.height -
-              AppBar().preferredSize.height -
-              MediaQuery.of(context).padding.top) *
-          0.60,
-      padding: const EdgeInsets.only(top: 15.0),
-      child: ListView.builder(
-          shrinkWrap: true,
-          itemCount: profileOffers.length,
-          itemBuilder: (BuildContext context, int index) =>
-              _offerCard(profileOffers[index])),
-    );
+    if (profileOffers.isNotEmpty) {
+      return Container(
+        height: (MediaQuery.of(context).size.height -
+                AppBar().preferredSize.height -
+                MediaQuery.of(context).padding.top) *
+            0.60,
+        padding: const EdgeInsets.only(top: 15.0),
+        child: ListView.builder(
+            shrinkWrap: true,
+            itemCount: profileOffers.length,
+            itemBuilder: (BuildContext context, int index) =>
+                _offerCard(profileOffers[index])),
+      );
+    } else {
+      return Container(
+        height: (MediaQuery.of(context).size.height -
+                AppBar().preferredSize.height -
+                MediaQuery.of(context).padding.top) *
+            0.60,
+        width: MediaQuery.of(context).size.width,
+        padding: const EdgeInsets.only(top: 15.0),
+        child: Center(
+            child: Text(
+          'Vous n\'avez pas encore posté d\'annonce !',
+          style: TextStyle(
+              fontSize: 18,
+              color: darkNightMode ? textDarkTheme : Colors.black),
+        )),
+      );
+    }
   }
 
   Widget _offerCard(ItemModel item) {

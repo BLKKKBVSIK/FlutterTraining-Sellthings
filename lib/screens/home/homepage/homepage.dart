@@ -31,7 +31,9 @@ class _HomePage extends State<HomePage> {
         i++;
       });
     }
-    if (nbrItems >= it.length) nbrItems = 0;
+    if (nbrItems >= it.length) {
+      nbrItems = 0;
+    }
   }
 
   ImageProvider<dynamic> getImage(int index) {
@@ -42,69 +44,83 @@ class _HomePage extends State<HomePage> {
   }
 
   Widget _tileItem(int index) {
-    return Padding(
-      padding: const EdgeInsets.all(4.0),
-      child: Column(
-        children: <Widget>[
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8.0),
-            child: Row(
-              children: <Widget>[
-                CircleAvatar(
-                  backgroundImage: getImage(index),
-                  radius: 15,
-                ),
-                Padding(
-                  padding: const EdgeInsets.only(left: 8.0),
-                  child: Text(
-                    _listItem[index].author,
-                    style: TextStyle(fontWeight: FontWeight.w300),
+    return Container(
+      color: darkNightMode ? menuDarkTheme : Colors.white,
+      child: Padding(
+        padding: const EdgeInsets.all(4.0),
+        child: Column(
+          children: <Widget>[
+            Padding(
+              padding: const EdgeInsets.only(bottom: 8.0),
+              child: Row(
+                children: <Widget>[
+                  CircleAvatar(
+                    backgroundImage: getImage(index),
+                    radius: 15,
                   ),
-                ),
-              ],
-            ),
-          ),
-          GestureDetector(
-            child: Hero(
-              tag: 'hero' + index.toString(),
-              child: _listItem[index].images == null
-                  ? Image.file(
-                      _listItem[index].imagePath,
-                      fit: BoxFit.cover,
-                      height: MediaQuery.of(context).size.height * 0.3,
-                    )
-                  : Image.network(
-                      _listItem[index].images[0],
-                      fit: BoxFit.cover,
-                      height: MediaQuery.of(context).size.height * 0.3,
+                  Padding(
+                    padding: const EdgeInsets.only(left: 8.0),
+                    child: Text(
+                      _listItem[index].author,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w300,
+                          color: darkNightMode ? textDarkTheme : Colors.black,
+                      ),
                     ),
+                  ),
+                ],
+              ),
             ),
-            onTap: () {
-              Navigator.push(context, MaterialPageRoute<void>(builder: (_) {
-                return ProductPage(
-                  item: _listItem[index],
-                  index: index,
-                );
-              }));
-            },
-          ),
-          Padding(
-            padding: const EdgeInsets.only(left: 8.0, top: 8.0),
-            child: ListView(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              children: <Widget>[
-                Text(_listItem[index].price + '€',
-                    style: TextStyle(fontWeight: FontWeight.w700)),
-                Text(_listItem[index].name,
-                    style: TextStyle(fontWeight: FontWeight.w400)),
-                Text(_listItem[index].state,
-                    style: TextStyle(
-                        color: Colors.grey, fontWeight: FontWeight.w300)),
-              ],
+            GestureDetector(
+              child: Hero(
+                tag: 'hero' + index.toString(),
+                child: _listItem[index].images == null
+                    ? Image.file(
+                        _listItem[index].imagePath,
+                        fit: BoxFit.cover,
+                        height: MediaQuery.of(context).size.height * 0.3,
+                      )
+                    : Image.network(
+                        _listItem[index].images[0],
+                        fit: BoxFit.cover,
+                        height: MediaQuery.of(context).size.height * 0.3,
+                      ),
+              ),
+              onTap: () {
+                Navigator.push(context, MaterialPageRoute<void>(builder: (_) {
+                  return ProductPage(
+                    item: _listItem[index],
+                    index: index,
+                  );
+                }));
+              },
             ),
-          )
-        ],
+            Padding(
+              padding: const EdgeInsets.only(left: 8.0, top: 8.0),
+              child: ListView(
+                physics: const NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                children: <Widget>[
+                  Text(_listItem[index].price + '€',
+                      style: TextStyle(
+                        fontWeight: FontWeight.w700,
+                        color: darkNightMode ? textDarkTheme : Colors.black,
+                      )),
+                  Text(_listItem[index].name,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w400,
+                        color: darkNightMode ? textDarkTheme : Colors.black,
+                      )),
+                  Text(_listItem[index].state,
+                      style: TextStyle(
+                        fontWeight: FontWeight.w300,
+                        color: darkNightMode ? Colors.white70 : Colors.grey,
+                      )),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
