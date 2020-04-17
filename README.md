@@ -1,6 +1,6 @@
 # SellThings
 
-Sellthing is a Vinted like project, to sell items thought an app using FireAuth and Flutter.
+Sellthing is a Vinted like app to sell items thought an app using FireAuth and Flutter.
 
 ## PREVIEW:
 
@@ -14,5 +14,6 @@ Sellthing is a Vinted like project, to sell items thought an app using FireAuth 
 
 ## RELEASE:
 
-No release upcoming, but you can still build the project for yourself with `flutter build` command.
+No release upcoming, but you can still build the project for yourself with `flutter build` command. 
+
 Don't forget to change the FireAuth endpoint.
